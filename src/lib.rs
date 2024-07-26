@@ -17,7 +17,12 @@ fn create_object() -> Uuid {
 pub struct Ingredient {
     pub name: String,
     pub quantity: u32,
+    #[serde(default = "default_recipe_craftable")]
     pub recipe_craftable: bool,
+}
+
+fn default_recipe_craftable() -> bool {
+    true
 }
 
 /// Structure representing a Crafter.
@@ -32,8 +37,8 @@ pub struct Recipe {
     pub name: String,
     pub ingredients: Vec<Ingredient>,
     pub outcome: String,
-    pub crafters: Vec<String>,  // Updated to Vec<String> for crafters
-    pub recipe_craftable: bool,  // Added field for recipe_craftable
+    pub crafters: Vec<String>,  // List of crafters as strings
+    pub recipe_craftable: bool,  // Recipe craftable flag
 }
 
 /// Structure representing an Item.
@@ -166,7 +171,7 @@ impl RecipeBook {
     pub fn import_recipes_from_file(&mut self, filename: &str) -> Result<(), Box<dyn std::error::Error>> {
         let file = File::open(filename)?;
         let reader = BufReader::new(file);
-
+    
         if filename.ends_with(".json") {
             let json_data: Value = serde_json::from_reader(reader)?;
             if let Some(recipes) = json_data.get("recipes").and_then(Value::as_array) {
@@ -178,15 +183,15 @@ impl RecipeBook {
                 return Err(Box::new(Error::new(ErrorKind::InvalidData, "Invalid JSON format")));
             }
         } else if filename.ends_with(".csv") {
-            // Handle CSV import (assuming the same structure is present in CSV)
-            // Note: You may need to adjust this based on the CSV structure.
+            // Handle CSV import if needed
             return Err(Box::new(Error::new(ErrorKind::Other, "CSV import not implemented")));
         } else {
             return Err(Box::new(Error::new(ErrorKind::Other, "Unsupported file format")));
         }
-
+    
         Ok(())
-    }
+    }    
+
 }
 
 
@@ -244,7 +249,7 @@ fn main() {
     }
 
     // Example crafters
-    let furnace = Crafter { name: "Furnace".to_string() };
+    let oven = Crafter { name: "Oven".to_string() };
     let workbench = Crafter { name: "Workbench".to_string() };
 
     // Adding recipes with crafters as strings
@@ -268,9 +273,9 @@ fn main() {
     });
 
     // Retrieve recipes for a specific crafter
-    let furnace_recipes = recipe_book.get_recipes_for_crafter(&furnace);
-    println!("Recipes for Furnace:");
-    for recipe in furnace_recipes {
+    let oven_recipes = recipe_book.get_recipes_for_crafter(&oven);
+    println!("Recipes for Oven:");
+    for recipe in oven_recipes {
         println!("{:?}", recipe);
     }
 
