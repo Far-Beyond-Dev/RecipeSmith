@@ -1,4 +1,3 @@
-```md
 # RecipeSmith
 
 RecipeSmith is a Rust-based module designed by asterisk for use with games that utilize the stars beyond horizon Server Backend as a framework for managing recipes, ingredients, and their interactions within a recipe book. This system integrates with PebbleVault for data storage and retrieval while being capable of communication with other submodules, ensuring modularity and independence. The goal is to enable dynamic recipe management, including creating, storing, retrieving, and crafting recipes based on available ingredients.
@@ -108,9 +107,9 @@ RecipeSmith is easily extendable and customizable, allowing developers to add ne
 
 ## Getting Started
                                        
-1. **Clone the Repository:** // this still needs to be given the upcoming repo name for the module by Trident.
+1. **Clone the Repository:**
    ```sh
-   git clone https://github.com/yourusername/RecipeSmith.git
+   git clone https://github.com/Stars-Beyond/RecipeSmith
    ```
 
 2. **Navigate to the Project Directory:**
@@ -183,7 +182,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
----
 
 RecipeSmith is a powerful tool for managing and interacting with recipes and ingredients. With its robust features and seamless integration with PebbleVault, it provides a dynamic and flexible solution for any recipe management needs you may have.
-```
