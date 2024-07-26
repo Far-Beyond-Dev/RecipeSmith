@@ -1,6 +1,6 @@
 # RecipeSmith
 
-RecipeSmith is a Rust-based module designed for managing recipes, ingredients, and crafting systems in games. It provides a flexible framework for creating, storing, retrieving, and crafting recipes based on available ingredients.
+RecipeSmith is a Rust-based module designed for managing recipes, ingredients, crafting systems, and inventories in games. It provides a flexible framework for creating, storing, retrieving, and crafting recipes based on available ingredients, as well as managing player and storage inventories.
 
 ## Features
 
@@ -51,6 +51,65 @@ pub struct RecipeBook {
 
 Central structure for managing recipes and their associations with crafters.
 
+## Inventory Management Systems
+
+### Item
+
+```rust
+pub struct Item {
+    pub name: String,
+    pub model: Option<String>,
+    pub meta_tags: HashMap<String, Value>,
+}
+```
+
+Represents an item in the game, with a name, optional model reference, and additional metadata.
+
+### PlayerInventory
+
+```rust
+pub struct PlayerInventory {
+    pub slots: HashMap<u32, Option<Item>>,
+}
+```
+
+Manages player inventories with methods for adding, removing, and retrieving items.
+
+#### Methods
+
+```rust
+impl PlayerInventory {
+    pub fn new(num_slots: u32) -> Self
+    pub fn get_item(&self, slot: u32) -> Option<&Item>
+    pub fn add_item(&mut self, slot: u32, item: Item)
+    pub fn remove_item(&mut self, slot: u32) -> Option<Item>
+    pub fn empty_slot(&mut self, slot: u32)
+}
+```
+
+These methods allow for creating a new inventory, getting an item from a slot, adding an item to a slot, removing an item from a slot, and emptying a slot.
+
+### StorageContainer
+
+```rust
+pub struct StorageContainer {
+    pub uuid: Uuid,
+    pub inventory: PlayerInventory,
+}
+```
+
+Represents storage containers in the game world, each with its own inventory.
+
+#### Methods
+
+```rust
+impl StorageContainer {
+    pub fn new(num_slots: u32) -> Self
+}
+```
+
+Creates a new StorageContainer with a specified number of inventory slots.
+
 ## Key Functionalities
 
 ### Adding Recipes
@@ -93,29 +152,6 @@ impl RecipeBook {
 
 Import recipes from JSON files, allowing for easy expansion of the recipe database.
 
-## Inventory Management
-
-### PlayerInventory
-
-```rust
-pub struct PlayerInventory {
-    pub slots: HashMap<u32, Option<Item>>,
-}
-```
-
-Manages player inventories with methods for adding, removing, and retrieving items.
-
-### StorageContainer
-
-```rust
-pub struct StorageContainer {
-    pub uuid: Uuid,
-    pub inventory: PlayerInventory,
-}
-```
-
-Represents storage containers in the game world, each with its own inventory.
-
 ## Usage Example
 
 ```rust
@@ -131,10 +167,31 @@ fn main() {
     let mut inventory: HashMap<String, Ingredient> = HashMap::new();
     // Add ingredients to inventory...
 
+    // Create a player inventory
+    let mut player_inv = PlayerInventory::new(20);
+    
+    // Add an item to the player's inventory
+    let bread = Item {
+        name: "Bread".to_string(),
+        model: Some("bread_3d_model".to_string()),
+        meta_tags: HashMap::new(),
+    };
+    player_inv.add_item(0, bread);
+
+    // Create a storage container
+    let storage = StorageContainer::new(50);
+
     // Attempt to craft
     if recipe_book.can_craft("Bread", &inventory) {
         if let Some(item) = recipe_book.craft("Bread", &mut inventory) {
             println!("Crafted: {}", item);
+            // Add the crafted item to the player's inventory
+            let crafted_item = Item {
+                name: item,
+                model: None,
+                meta_tags: HashMap::new(),
+            };
+            player_inv.add_item(1, crafted_item);
         }
     }
 }
