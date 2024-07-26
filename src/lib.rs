@@ -1,77 +1,148 @@
-/// This Script is simply a Rough Concept and May be changed Multiple Times before we settle on a result so don't get too comfy just yet.
-
-// This is mainly just a simple Subsystem Asterisk & Trident Have Been Working on. We will most likely be implementing the Associated Databases found here: Horizon-Community-Edition\src\subsystems\Recipe Smith Subsystem\Recipe List into (SQL) Soon for performance Reasons.
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 use std::fs::File;
 use std::io::{BufReader, Error, ErrorKind};
 use csv::Reader;
 use serde_json::Value;
+use uuid::Uuid;
+
+/// Placeholder function to simulate object creation in a memory database.
+fn create_object() -> Uuid {
+    // Simulate creating an object and returning its UUID
+    Uuid::new_v4()
+}
 
 /// Structure representing an Ingredient with required quantity and recipe crafting flag.
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Ingredient {
-    pub name: String,        // Name of the ingredient
-    pub quantity: u32,       // Quantity of the ingredient needed
-    pub recipe_craftable: bool, // Flag indicating if enough quantity is available to craft recipes
-    // Add more properties here as needed
+    pub name: String,
+    pub quantity: u32,
+    pub recipe_craftable: bool,
 }
 
-/// Structure representing a Recipe.
+/// Structure representing a Crafter.
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Eq, Hash)]
+pub struct Crafter {
+    pub name: String,
+}
+
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Recipe {
-    pub name: String,                       // Name of the recipe
-    pub ingredients: Vec<Ingredient>,       // List of ingredients and their quantities
-    pub outcome: String,                    // Outcome of the recipe
-    // Add more properties here as needed
+    pub name: String,
+    pub ingredients: Vec<Ingredient>,
+    pub outcome: String,
+    pub crafters: Vec<String>, // Change this line
+    pub recipe_craftable: bool,
+}
+
+/// Structure representing an Item.
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct Item {
+    pub name: String,
+    pub model: Option<String>,
+    pub meta_tags: HashMap<String, Value>,
+}
+
+/// Struct representing a Player Inventory.
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct PlayerInventory {
+    pub slots: HashMap<u32, Option<Item>>,
+}
+
+impl PlayerInventory {
+    pub fn new(num_slots: u32) -> Self {
+        let mut slots = HashMap::new();
+        for i in 0..num_slots {
+            slots.insert(i, None);
+        }
+        Self { slots }
+    }
+
+    pub fn get_item(&self, slot: u32) -> Option<&Item> {
+        self.slots.get(&slot).and_then(|item| item.as_ref())
+    }
+
+    pub fn add_item(&mut self, slot: u32, item: Item) {
+        self.slots.insert(slot, Some(item));
+    }
+
+    pub fn remove_item(&mut self, slot: u32) -> Option<Item> {
+        self.slots.insert(slot, None).flatten()
+    }
+
+    pub fn empty_slot(&mut self, slot: u32) {
+        self.slots.insert(slot, None);
+    }
+}
+
+/// Struct representing a Storage Container.
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct StorageContainer {
+    pub uuid: Uuid,
+    pub inventory: PlayerInventory,
+}
+
+impl StorageContainer {
+    pub fn new(num_slots: u32) -> Self {
+        Self {
+            uuid: create_object(),
+            inventory: PlayerInventory::new(num_slots),
+        }
+    }
 }
 
 /// Struct representing a Recipe Book.
 pub struct RecipeBook {
-    pub recipes: HashMap<String, Recipe>,    // HashMap to store recipes
-    // Add more properties here if you want to, I just did this as a starting example so people understand it better
+    pub recipes: HashMap<String, Recipe>,
+    pub crafters: HashMap<Crafter, Vec<String>>,
 }
 
 impl RecipeBook {
-    /// Creates a new RecipeBook.
     pub fn new() -> Self {
         Self {
-            recipes: HashMap::new(),    // Here I've Simply Initialized an empty HashMap for recipes
+            recipes: HashMap::new(),
+            crafters: HashMap::new(),
         }
     }
 
-    /// The Code Below Adds a new recipe to the RecipeBook.
     pub fn add_recipe(&mut self, recipe: Recipe) {
-        self.recipes.insert(recipe.name.clone(), recipe);    // Insert a recipe into the HashMap
+        for crafter_name in &recipe.crafters {
+            let crafter = Crafter { name: crafter_name.clone() }; // Convert string to Crafter
+            self.crafters.entry(crafter).or_insert_with(Vec::new).push(recipe.name.clone());
+        }
+        self.recipes.insert(recipe.name.clone(), recipe);
     }
 
-    /// Retrieves a recipe by its name.
     pub fn get_recipe(&self, name: &str) -> Option<&Recipe> {
-        self.recipes.get(name)    // Retrieve a recipe by name from the HashMap
+        self.recipes.get(name)
     }
 
-    /// Checks if a recipe can be crafted with the given inventory.
+    pub fn get_recipes_for_crafter(&self, crafter: &Crafter) -> Vec<&Recipe> {
+        self.crafters.get(crafter)
+            .map(|recipe_names| recipe_names.iter().filter_map(|name| self.get_recipe(name)).collect())
+            .unwrap_or_else(Vec::new)
+    }
+
     pub fn can_craft(&self, recipe_name: &str, inventory: &HashMap<String, Ingredient>) -> bool {
         if let Some(recipe) = self.get_recipe(recipe_name) {
             for ingredient in &recipe.ingredients {
                 if let Some(inventory_ingredient) = inventory.get(&ingredient.name) {
                     if !inventory_ingredient.recipe_craftable || inventory_ingredient.quantity < ingredient.quantity {
-                        return false;    // Not enough of this ingredient in inventory or not craftable
+                        return false;
                     }
                 } else {
-                    return false;    // Missing this ingredient in inventory
+                    return false;
                 }
             }
-            true    // Can craft the recipe
+            true
         } else {
-            false    // Recipe not found in the RecipeBook
+            false
         }
     }
 
-    /// Crafts a recipe if possible, updating the inventory.
     pub fn craft(&self, recipe_name: &str, inventory: &mut HashMap<String, Ingredient>) -> Option<String> {
         if self.can_craft(recipe_name, inventory) {
-            let recipe = self.get_recipe(recipe_name).unwrap().clone();    // Clone the recipe
+            let recipe = self.get_recipe(recipe_name).unwrap().clone();
             for ingredient in &recipe.ingredients {
                 if let Some(inventory_ingredient) = inventory.get_mut(&ingredient.name) {
                     if inventory_ingredient.recipe_craftable {
@@ -79,27 +150,22 @@ impl RecipeBook {
                     }
                 }
             }
-            Some(recipe.outcome.clone())    // Return the outcome of crafting
+            Some(recipe.outcome.clone())
         } else {
-            None    // Return None if crafting fails
+            None
         }
     }
 
-    // This import Feature is a special request from that of Trident so please (Do Not Remove) Unless Authorized by him First.
-
-    /// Imports recipes from a JSON or CSV file.
     pub fn import_recipes_from_file(&mut self, filename: &str) -> Result<(), Box<dyn std::error::Error>> {
         let file = File::open(filename)?;
         let reader = BufReader::new(file);
 
         if filename.ends_with(".json") {
-            // Parse JSON
             let recipes: Vec<Recipe> = serde_json::from_reader(reader)?;
             for recipe in recipes {
                 self.add_recipe(recipe);
             }
         } else if filename.ends_with(".csv") {
-            // Parse CSV
             let mut csv_reader = Reader::from_reader(reader);
             for result in csv_reader.deserialize::<Recipe>() {
                 let recipe = result?;
@@ -113,19 +179,17 @@ impl RecipeBook {
     }
 }
 
-/// Main.rs code is below this stays here and below I've provided a Sample for understanding it Further by the rest of the SBH Team.
-
 fn main() {
     // Example usage:
     let mut recipe_book = RecipeBook::new();
 
     // Import recipes from JSON
-    if let Err(e) = recipe_book.import_recipes_from_file("Recipe List/recipes.json") {
+    if let Err(e) = recipe_book.import_recipes_from_file("recipes/recipes.json") {
         eprintln!("Error importing recipes: {}", e);
     }
 
     // Import recipes from CSV
-    if let Err(e) = recipe_book.import_recipes_from_file("Recipe List/recipes.csv") {
+    if let Err(e) = recipe_book.import_recipes_from_file("recipes/recipes.csv") {
         eprintln!("Error importing recipes: {}", e);
     }
 
@@ -163,6 +227,37 @@ fn main() {
         );
     }
 
+    // Example crafters
+    let furnace = Crafter { name: "Furnace".to_string() };
+    let workbench = Crafter { name: "Workbench".to_string() };
+
+    // Adding recipes with crafters as strings
+    recipe_book.add_recipe(Recipe {
+        name: "Bread".to_string(),
+        ingredients: vec![
+            Ingredient {
+                name: "Flour".to_string(),
+                quantity: 2,
+                recipe_craftable: true,
+            },
+            Ingredient {
+                name: "Water".to_string(),
+                quantity: 1,
+                recipe_craftable: true,
+            },
+        ],
+        outcome: "Bread".to_string(),
+        crafters: vec!["Oven".to_string(), "Bakery".to_string()],
+        recipe_craftable: true,
+    });
+
+    // Retrieve recipes for a specific crafter
+    let furnace_recipes = recipe_book.get_recipes_for_crafter(&furnace);
+    println!("Recipes for Furnace:");
+    for recipe in furnace_recipes {
+        println!("{:?}", recipe);
+    }
+
     // Attempt to craft Bread
     if recipe_book.can_craft("Bread", &inventory) {
         if let Some(item) = recipe_book.craft("Bread", &mut inventory) {
@@ -172,16 +267,5 @@ fn main() {
         }
     } else {
         println!("Not enough ingredients to craft Bread.");
-    }
-
-    // Attempt to craft Cake
-    if recipe_book.can_craft("Cake", &inventory) {
-        if let Some(item) = recipe_book.craft("Cake", &mut inventory) {
-            println!("Crafted: {}", item);
-        } else {
-            println!("Failed to craft Cake.");
-        }
-    } else {
-        println!("Not enough ingredients to craft Cake.");
     }
 }

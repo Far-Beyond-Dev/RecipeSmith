@@ -1,5 +1,4 @@
 {
-    "_comment": "Recipes JSON file containing various recipes and their ingredients.",
     "recipes": [
         {
             "name": "Bread",
@@ -8,7 +7,9 @@
                 {"name": "Water", "quantity": 1},
                 {"name": "Salt", "quantity": 1}
             ],
-            "outcome": "Bread"
+            "outcome": "Bread",
+            "crafters": ["Oven", "Bakery"],
+            "recipe_craftable": true
         },
         {
             "name": "Cake",
@@ -18,7 +19,9 @@
                 {"name": "Egg", "quantity": 1},
                 {"name": "Milk", "quantity": 1}
             ],
-            "outcome": "Cake"
+            "outcome": "Cake",
+            "crafters": ["Oven", "Bakery"],
+            "recipe_craftable": true
         },
         {
             "name": "Potion",
@@ -26,7 +29,9 @@
                 {"name": "Herb", "quantity": 1},
                 {"name": "Water", "quantity": 1}
             ],
-            "outcome": "Health Potion"
+            "outcome": "Health Potion",
+            "crafters": ["Alchemy Table"],
+            "recipe_craftable": true
         },
         {
             "name": "Stew",
@@ -36,7 +41,9 @@
                 {"name": "Carrot", "quantity": 2},
                 {"name": "Water", "quantity": 2}
             ],
-            "outcome": "Stew"
+            "outcome": "Stew",
+            "crafters": ["Cooking Pot", "Kitchen"],
+            "recipe_craftable": true
         },
         {
             "name": "Salad",
@@ -46,7 +53,9 @@
                 {"name": "Cucumber", "quantity": 1},
                 {"name": "Olive Oil", "quantity": 1}
             ],
-            "outcome": "Salad"
+            "outcome": "Salad",
+            "crafters": ["Kitchen", "Salad Bar"],
+            "recipe_craftable": true
         },
         {
             "name": "Sandwich",
@@ -56,7 +65,9 @@
                 {"name": "Cheese", "quantity": 1},
                 {"name": "Lettuce", "quantity": 1}
             ],
-            "outcome": "Sandwich"
+            "outcome": "Sandwich",
+            "crafters": ["Kitchen", "Sandwich Station"],
+            "recipe_craftable": true
         }
     ]
 }
