@@ -26,13 +26,14 @@ pub struct Crafter {
     pub name: String,
 }
 
+/// Structure representing a Recipe.
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Recipe {
     pub name: String,
     pub ingredients: Vec<Ingredient>,
     pub outcome: String,
-    pub crafters: Vec<String>, // Change this line
-    pub recipe_craftable: bool,
+    pub crafters: Vec<String>,  // Updated to Vec<String> for crafters
+    pub recipe_craftable: bool,  // Added field for recipe_craftable
 }
 
 /// Structure representing an Item.
@@ -96,6 +97,12 @@ pub struct RecipeBook {
     pub recipes: HashMap<String, Recipe>,
     pub crafters: HashMap<Crafter, Vec<String>>,
 }
+
+////////////////////////////////////////////
+//               Recipe Book              //
+//  This is where recipes are added,      //
+//  and indexed                           //
+////////////////////////////////////////////
 
 impl RecipeBook {
     pub fn new() -> Self {
@@ -161,16 +168,19 @@ impl RecipeBook {
         let reader = BufReader::new(file);
 
         if filename.ends_with(".json") {
-            let recipes: Vec<Recipe> = serde_json::from_reader(reader)?;
-            for recipe in recipes {
-                self.add_recipe(recipe);
+            let json_data: Value = serde_json::from_reader(reader)?;
+            if let Some(recipes) = json_data.get("recipes").and_then(Value::as_array) {
+                for recipe in recipes {
+                    let recipe: Recipe = serde_json::from_value(recipe.clone())?;
+                    self.add_recipe(recipe);
+                }
+            } else {
+                return Err(Box::new(Error::new(ErrorKind::InvalidData, "Invalid JSON format")));
             }
         } else if filename.ends_with(".csv") {
-            let mut csv_reader = Reader::from_reader(reader);
-            for result in csv_reader.deserialize::<Recipe>() {
-                let recipe = result?;
-                self.add_recipe(recipe);
-            }
+            // Handle CSV import (assuming the same structure is present in CSV)
+            // Note: You may need to adjust this based on the CSV structure.
+            return Err(Box::new(Error::new(ErrorKind::Other, "CSV import not implemented")));
         } else {
             return Err(Box::new(Error::new(ErrorKind::Other, "Unsupported file format")));
         }
@@ -178,6 +188,12 @@ impl RecipeBook {
         Ok(())
     }
 }
+
+
+/////////////////////////////////////////////////////////
+//                TESTING PURPOSES ONLY!!!             //
+//  This is to test that the system works correctly    //
+/////////////////////////////////////////////////////////
 
 fn main() {
     // Example usage:
