@@ -1,17 +1,35 @@
 [package]
-name = "recipeSmith"
-version = "0.1.0"
-edition = "2021"
+name = "recipesmith"
+version = "0.1.4"
+edition = "2024"
 
 [dependencies]
-csv = "1.3.0"
-rusqlite = "0.24"
+tokio = { version = "1.0", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-uuid = { version = "1.0", features = ["serde", "v4"] }
-# Or use csv if you're using CSV format
-# csv = "1.1"
+csv = "1.1"
+uuid = { version = "1.0", features = ["v4"] }
+log = "0.4"
+env_logger = "0.9"
+chrono = "0.4"
+pebblevault = "0.1" # Ensure you have the correct version or the crate exists
 
-[[bin]]
-name = "recipieSmith"
-path = "src/lib.rs"
+[features]
+default = ["full"]
+
+[dependencies.async-std]
+version = "1.10"
+features = ["attributes"]
+
+[dependencies.futures]
+version = "0.3"
+
+[Communications]
+# Uncomment this communication dependency when SkillsScript submodule is implemented
+# skillscript = { git = "https://github.com/gamedev44/skillscript" }
+
+# not needed as of now due to pebble vault being a crate the below isnt needed or necessary according to trident.
+
+[backend]
+# told me this wasnt to go here but i still wasnt sure whether it may be sued later so i kept this just incase they change anything.
+# pebblevault = "0.0.0"
