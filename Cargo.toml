@@ -1,7 +1,7 @@
 [package]
 name = "recipesmith"
 version = "0.1.4"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
 tokio = { version = "1.0", features = ["full"] }
@@ -12,24 +12,13 @@ uuid = { version = "1.0", features = ["v4"] }
 log = "0.4"
 env_logger = "0.9"
 chrono = "0.4"
-pebblevault = "0.1" # Ensure you have the correct version or the crate exists
 
 [features]
 default = ["full"]
 
-[dependencies.async-std]
-version = "1.10"
-features = ["attributes"]
+async-std = { version = "1.10", features = ["attributes"] }
+futures = "0.3"
 
-[dependencies.futures]
-version = "0.3"
-
-[Communications]
+[dependencies.skillscript]
 # Uncomment this communication dependency when SkillsScript submodule is implemented
-# skillscript = { git = "https://github.com/gamedev44/skillscript" }
-
-# not needed as of now due to pebble vault being a crate the below isnt needed or necessary according to trident.
-
-[backend]
-# told me this wasnt to go here but i still wasnt sure whether it may be sued later so i kept this just incase they change anything.
-# pebblevault = "0.0.0"
+# git = "https://github.com/gamedev44/skillscript"
