@@ -1,0 +1,135 @@
+name,ingredient_name,ingredient_quantity,outcome,crafters,recipe_craftable,base_cook_time,cook_count
+Bread,Flour,2,Bread,"Oven,Bakery",true,30,0
+Bread,Water,1,Bread,"Oven,Bakery",true,30,0
+Bread,Salt,1,Bread,"Oven,Bakery",true,30,0
+Bread,Yeast,1,Bread,"Oven,Bakery",true,30,0
+Cake,Flour,3,Cake,"Oven,Bakery",true,45,0
+Cake,Sugar,2,Cake,"Oven,Bakery",true,45,0
+Cake,Egg,1,Cake,"Oven,Bakery",true,45,0
+Cake,Milk,1,Cake,"Oven,Bakery",true,45,0
+Cake,Butter,1,Cake,"Oven,Bakery",true,45,0
+Health Potion,Herb,1,Health Potion,"Alchemy Table",true,5,0
+Health Potion,Water,1,Health Potion,"Alchemy Table",true,5,0
+Beef Stew,Beef,3,Beef Stew,"Cauldron,Cooking Pot",true,240,0
+Beef Stew,Potato,2,Beef Stew,"Cauldron,Cooking Pot",true,240,0
+Beef Stew,Carrot,2,Beef Stew,"Cauldron,Cooking Pot",true,240,0
+Beef Stew,Onion,1,Beef Stew,"Cauldron,Cooking Pot",true,240,0
+Beef Stew,Water,3,Beef Stew,"Cauldron,Cooking Pot",true,240,0
+Beef Stew,Salt,1,Beef Stew,"Cauldron,Cooking Pot",true,240,0
+Beef Stew,Pepper,1,Beef Stew,"Cauldron,Cooking Pot",true,240,0
+Vegetable Soup,Carrot,2,Vegetable Soup,"Cauldron,Cooking Pot",true,180,0
+Vegetable Soup,Potato,2,Vegetable Soup,"Cauldron,Cooking Pot",true,180,0
+Vegetable Soup,Onion,1,Vegetable Soup,"Cauldron,Cooking Pot",true,180,0
+Vegetable Soup,Celery,2,Vegetable Soup,"Cauldron,Cooking Pot",true,180,0
+Vegetable Soup,Water,3,Vegetable Soup,"Cauldron,Cooking Pot",true,180,0
+Vegetable Soup,Salt,1,Vegetable Soup,"Cauldron,Cooking Pot",true,180,0
+Vegetable Soup,Pepper,1,Vegetable Soup,"Cauldron,Cooking Pot",true,180,0
+Roast Chicken,Chicken,1,Roast Chicken,"Oven,Fire Roast",true,90,0
+Roast Chicken,Garlic,1,Roast Chicken,"Oven,Fire Roast",true,90,0
+Roast Chicken,Rosemary,1,Roast Chicken,"Oven,Fire Roast",true,90,0
+Roast Chicken,Lemon,1,Roast Chicken,"Oven,Fire Roast",true,90,0
+Roast Chicken,Salt,1,Roast Chicken,"Oven,Fire Roast",true,90,0
+Roast Chicken,Pepper,1,Roast Chicken,"Oven,Fire Roast",true,90,0
+Grilled Fish,Fish,1,Grilled Fish,"Grill,Open Fire",true,10,0
+Grilled Fish,Lemon,1,Grilled Fish,"Grill,Open Fire",true,10,0
+Grilled Fish,Salt,1,Grilled Fish,"Grill,Open Fire",true,10,0
+Fruit Salad,Apple,1,Fruit Salad,"Kitchen,Salad Bar",true,5,0
+Fruit Salad,Banana,1,Fruit Salad,"Kitchen,Salad Bar",true,5,0
+Fruit Salad,Orange,1,Fruit Salad,"Kitchen,Salad Bar",true,5,0
+Fruit Salad,Honey,1,Fruit Salad,"Kitchen,Salad Bar",true,5,0
+Berry Juice,Berry,3,Berry Juice,"Juicer,Kitchen",true,0,0
+Berry Juice,Water,1,Berry Juice,"Juicer,Kitchen",true,0,0
+Herbal Medicine,Herb,2,Herbal Medicine,"Brewing Stand,Alchemy Table",true,10,0
+Herbal Medicine,Water,1,Herbal Medicine,"Brewing Stand,Alchemy Table",true,10,0
+Herbal Medicine,Honey,1,Herbal Medicine,"Brewing Stand,Alchemy Table",true,10,0
+Cooked Meat,Meat,1,Cooked Meat,"Grill,Open Fire",true,8,0
+Cooked Meat,Salt,1,Cooked Meat,"Grill,Open Fire",true,8,0
+Baked Potato,Potato,1,Baked Potato,"Oven,Fire Roast",true,60,0
+Baked Potato,Salt,1,Baked Potato,"Oven,Fire Roast",true,60,0
+Baked Potato,Butter,1,Baked Potato,"Oven,Fire Roast",true,60,0
+Roasted Vegetables,Carrot,2,Roasted Vegetables,"Oven,Grill",true,45,0
+Roasted Vegetables,Potato,2,Roasted Vegetables,"Oven,Grill",true,45,0
+Roasted Vegetables,Onion,1,Roasted Vegetables,"Oven,Grill",true,45,0
+Roasted Vegetables,Olive Oil,1,Roasted Vegetables,"Oven,Grill",true,45,0
+Roasted Vegetables,Garlic,1,Roasted Vegetables,"Oven,Grill",true,45,0
+Healing Salve,Herb,2,Healing Salve,"Alchemy Table",true,10,0
+Healing Salve,Oil,1,Healing Salve,"Alchemy Table",true,10,0
+Pancakes,Flour,2,Pancakes,"Griddle,Pan",true,15,0
+Pancakes,Milk,1,Pancakes,"Griddle,Pan",true,15,0
+Pancakes,Egg,1,Pancakes,"Griddle,Pan",true,15,0
+Pancakes,Sugar,1,Pancakes,"Griddle,Pan",true,15,0
+Pancakes,Butter,1,Pancakes,"Griddle,Pan",true,15,0
+Omelette,Egg,2,Omelette,"Pan",true,10,0
+Omelette,Milk,1,Omelette,"Pan",true,10,0
+Omelette,Salt,1,Omelette,"Pan",true,10,0
+Omelette,Pepper,1,Omelette,"Pan",true,10,0
+Hamburger,Bread,2,Hamburger,"Grill,Pan",true,20,0
+Hamburger,Beef,1,Hamburger,"Grill,Pan",true,20,0
+Hamburger,Lettuce,1,Hamburger,"Grill,Pan",true,20,0
+Hamburger,Tomato,1,Hamburger,"Grill,Pan",true,20,0
+Hamburger,Cheese,1,Hamburger,"Grill,Pan",true,20,0
+Pizza,Dough,1,Pizza,"Oven",true,25,0
+Pizza,Tomato Sauce,1,Pizza,"Oven",true,25,0
+Pizza,Cheese,1,Pizza,"Oven",true,25,0
+Pizza,Pepperoni,1,Pizza,"Oven",true,25,0
+Apple Pie,Dough,1,Apple Pie,"Oven,Bakery",true,50,0
+Apple Pie,Apple,3,Apple Pie,"Oven,Bakery",true,50,0
+Apple Pie,Sugar,1,Apple Pie,"Oven,Bakery",true,50,0
+Apple Pie,Cinnamon,1,Apple Pie,"Oven,Bakery",true,50,0
+Mushroom Stew,Mushroom,3,Mushroom Stew,"Cauldron,Cooking Pot",true,200,0
+Mushroom Stew,Potato,2,Mushroom Stew,"Cauldron,Cooking Pot",true,200,0
+Mushroom Stew,Carrot,2,Mushroom Stew,"Cauldron,Cooking Pot",true,200,0
+Mushroom Stew,Onion,1,Mushroom Stew,"Cauldron,Cooking Pot",true,200,0
+Mushroom Stew,Water,3,Mushroom Stew,"Cauldron,Cooking Pot",true,200,0
+Mushroom Stew,Salt,1,Mushroom Stew,"Cauldron,Cooking Pot",true,200,0
+Mushroom Stew,Pepper,1,Mushroom Stew,"Cauldron,Cooking Pot",true,200,0
+Fried Rice,Rice,2,Fried Rice,"Pan,Wok",true,15,0
+Fried Rice,Carrot,1,Fried Rice,"Pan,Wok",true,15,0
+Fried Rice,Peas,1,Fried Rice,"Pan,Wok",true,15,0
+Fried Rice,Soy Sauce,1,Fried Rice,"Pan,Wok",true,15,0
+Chicken Curry,Chicken,2,Chicken Curry,"Cauldron,Cooking Pot",true,60,0
+Chicken Curry,Curry Powder,1,Chicken Curry,"Cauldron,Cooking Pot",true,60,0
+Chicken Curry,Coconut Milk,1,Chicken Curry,"Cauldron,Cooking Pot",true,60,0
+Chicken Curry,Onion,1,Chicken Curry,"Cauldron,Cooking Pot",true,60,0
+Chicken Curry,Garlic,1,Chicken Curry,"Cauldron,Cooking Pot",true,60,0
+Chicken Curry,Ginger,1,Chicken Curry,"Cauldron,Cooking Pot",true,60,0
+Spaghetti,Pasta,2,Spaghetti,"Cooking Pot",true,20,0
+Spaghetti,Tomato Sauce,1,Spaghetti,"Cooking Pot",true,20,0
+Spaghetti,Garlic,1,Spaghetti,"Cooking Pot",true,20,0
+Spaghetti,Ground Beef,1,Spaghetti,"Cooking Pot",true,20,0
+Salad,Lettuce,1,Salad,"Kitchen,Salad Bar",true,5,0
+Salad,Tomato,1,Salad,"Kitchen,Salad Bar",true,5,0
+Salad,Cucumber,1,Salad,"Kitchen,Salad Bar",true,5,0
+Salad,Olive Oil,1,Salad,"Kitchen,Salad Bar",true,5,0
+Salad,Vinegar,1,Salad,"Kitchen,Salad Bar",true,5,0
+Sausage and Eggs,Sausage,2,Sausage and Eggs,"Pan",true,10,0
+Sausage and Eggs,Egg,2,Sausage and Eggs,"Pan",true,10,0
+Sausage and Eggs,Salt,1,Sausage and Eggs,"Pan",true,10,0
+Sausage and Eggs,Pepper,1,Sausage and Eggs,"Pan",true,10,0
+Fish Stew,Fish,2,Fish Stew,"Cauldron,Cooking Pot",true,150,0
+Fish Stew,Potato,2,Fish Stew,"Cauldron,Cooking Pot",true,150,0
+Fish Stew,Carrot,2,Fish Stew,"Cauldron,Cooking Pot",true,150,0
+Fish Stew,Onion,1,Fish Stew,"Cauldron,Cooking Pot",true,150,0
+Fish Stew,Water,3,Fish Stew,"Cauldron,Cooking Pot",true,150,0
+Fish Stew,Salt,1,Fish Stew,"Cauldron,Cooking Pot",true,150,0
+Fish Stew,Pepper,1,Fish Stew,"Cauldron,Cooking Pot",true,150,0
+Steak,Beef,1,Steak,"Grill,Pan",true,15,0
+Steak,Salt,1,Steak,"Grill,Pan",true,15,0
+Steak,Pepper,1,Steak,"Grill,Pan",true,15,0
+Chicken Sandwich,Bread,2,Chicken Sandwich,"Pan",true,10,0
+Chicken Sandwich,Chicken,1,Chicken Sandwich,"Pan",true,10,0
+Chicken Sandwich,Lettuce,1,Chicken Sandwich,"Pan",true,10,0
+Chicken Sandwich,Tomato,1,Chicken Sandwich,"Pan",true,10,0
+Chicken Sandwich,Mayonnaise,1,Chicken Sandwich,"Pan",true,10,0
+Garlic Bread,Bread,1,Garlic Bread,"Oven",true,10,0
+Garlic Bread,Garlic,1,Garlic Bread,"Oven",true,10,0
+Garlic Bread,Butter,1,Garlic Bread,"Oven",true,10,0
+Beef Tacos,Tortilla,2,Beef Tacos,"Pan",true,20,0
+Beef Tacos,Ground Beef,1,Beef Tacos,"Pan",true,20,0
+Beef Tacos,Cheese,1,Beef Tacos,"Pan",true,20,0
+Beef Tacos,Lettuce,1,Beef Tacos,"Pan",true,20,0
+Beef Tacos,Tomato,1,Beef Tacos,"Pan",true,20,0
+Tomato Soup,Tomato,3,Tomato Soup,"Cauldron,Cooking Pot",true,40,0
+Tomato Soup,Water,2,Tomato Soup,"Cauldron,Cooking Pot",true,40,0
+Tomato Soup,Salt,1,Tomato Soup,"Cauldron,Cooking Pot",true,40,0
+Tomato Soup,Pepper,1,Tomato Soup,"Cauldron,Cooking Pot",true,40,0

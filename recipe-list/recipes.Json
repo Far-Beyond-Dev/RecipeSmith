@@ -1,0 +1,449 @@
+{
+    "recipes": [
+        {
+            "name": "Bread",
+            "ingredients": [
+                {"name": "Flour", "quantity": 2},
+                {"name": "Water", "quantity": 1},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Yeast", "quantity": 1}
+            ],
+            "outcome": "Bread",
+            "crafters": ["Oven", "Bakery"],
+            "recipe_craftable": true,
+            "base_cook_time": 30,
+            "cook_count": 0
+        },
+        {
+            "name": "Cake",
+            "ingredients": [
+                {"name": "Flour", "quantity": 3},
+                {"name": "Sugar", "quantity": 2},
+                {"name": "Egg", "quantity": 1},
+                {"name": "Milk", "quantity": 1},
+                {"name": "Butter", "quantity": 1}
+            ],
+            "outcome": "Cake",
+            "crafters": ["Oven", "Bakery"],
+            "recipe_craftable": true,
+            "base_cook_time": 45,
+            "cook_count": 0
+        },
+        {
+            "name": "Health Potion",
+            "ingredients": [
+                {"name": "Herb", "quantity": 1},
+                {"name": "Water", "quantity": 1}
+            ],
+            "outcome": "Health Potion",
+            "crafters": ["Alchemy Table"],
+            "recipe_craftable": true,
+            "base_cook_time": 5,
+            "cook_count": 0
+        },
+        {
+            "name": "Beef Stew",
+            "ingredients": [
+                {"name": "Beef", "quantity": 3},
+                {"name": "Potato", "quantity": 2},
+                {"name": "Carrot", "quantity": 2},
+                {"name": "Onion", "quantity": 1},
+                {"name": "Water", "quantity": 3},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Pepper", "quantity": 1}
+            ],
+            "outcome": "Beef Stew",
+            "crafters": ["Cauldron", "Cooking Pot"],
+            "recipe_craftable": true,
+            "base_cook_time": 240,
+            "cook_count": 0
+        },
+        {
+            "name": "Vegetable Soup",
+            "ingredients": [
+                {"name": "Carrot", "quantity": 2},
+                {"name": "Potato", "quantity": 2},
+                {"name": "Onion", "quantity": 1},
+                {"name": "Celery", "quantity": 2},
+                {"name": "Water", "quantity": 3},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Pepper", "quantity": 1}
+            ],
+            "outcome": "Vegetable Soup",
+            "crafters": ["Cauldron", "Cooking Pot"],
+            "recipe_craftable": true,
+            "base_cook_time": 180,
+            "cook_count": 0
+        },
+        {
+            "name": "Roast Chicken",
+            "ingredients": [
+                {"name": "Chicken", "quantity": 1},
+                {"name": "Garlic", "quantity": 1},
+                {"name": "Rosemary", "quantity": 1},
+                {"name": "Lemon", "quantity": 1},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Pepper", "quantity": 1}
+            ],
+            "outcome": "Roast Chicken",
+            "crafters": ["Oven", "Fire Roast"],
+            "recipe_craftable": true,
+            "base_cook_time": 90,
+            "cook_count": 0
+        },
+        {
+            "name": "Grilled Fish",
+            "ingredients": [
+                {"name": "Fish", "quantity": 1},
+                {"name": "Lemon", "quantity": 1},
+                {"name": "Salt", "quantity": 1}
+            ],
+            "outcome": "Grilled Fish",
+            "crafters": ["Grill", "Open Fire"],
+            "recipe_craftable": true,
+            "base_cook_time": 10,
+            "cook_count": 0
+        },
+        {
+            "name": "Fruit Salad",
+            "ingredients": [
+                {"name": "Apple", "quantity": 1},
+                {"name": "Banana", "quantity": 1},
+                {"name": "Orange", "quantity": 1},
+                {"name": "Honey", "quantity": 1}
+            ],
+            "outcome": "Fruit Salad",
+            "crafters": ["Kitchen", "Salad Bar"],
+            "recipe_craftable": true,
+            "base_cook_time": 5,
+            "cook_count": 0
+        },
+        {
+            "name": "Berry Juice",
+            "ingredients": [
+                {"name": "Berry", "quantity": 3},
+                {"name": "Water", "quantity": 1}
+            ],
+            "outcome": "Berry Juice",
+            "crafters": ["Juicer", "Kitchen"],
+            "recipe_craftable": true,
+            "base_cook_time": 0,
+            "cook_count": 0
+        },
+        {
+            "name": "Herbal Medicine",
+            "ingredients": [
+                {"name": "Herb", "quantity": 2},
+                {"name": "Water", "quantity": 1},
+                {"name": "Honey", "quantity": 1}
+            ],
+            "outcome": "Herbal Medicine",
+            "crafters": ["Brewing Stand", "Alchemy Table"],
+            "recipe_craftable": true,
+            "base_cook_time": 10,
+            "cook_count": 0
+        },
+        {
+            "name": "Cooked Meat",
+            "ingredients": [
+                {"name": "Meat", "quantity": 1},
+                {"name": "Salt", "quantity": 1}
+            ],
+            "outcome": "Cooked Meat",
+            "crafters": ["Grill", "Open Fire"],
+            "recipe_craftable": true,
+            "base_cook_time": 8,
+            "cook_count": 0
+        },
+        {
+            "name": "Baked Potato",
+            "ingredients": [
+                {"name": "Potato", "quantity": 1},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Butter", "quantity": 1}
+            ],
+            "outcome": "Baked Potato",
+            "crafters": ["Oven", "Fire Roast"],
+            "recipe_craftable": true,
+            "base_cook_time": 60,
+            "cook_count": 0
+        },
+        {
+            "name": "Roasted Vegetables",
+            "ingredients": [
+                {"name": "Carrot", "quantity": 2},
+                {"name": "Potato", "quantity": 2},
+                {"name": "Onion", "quantity": 1},
+                {"name": "Olive Oil", "quantity": 1},
+                {"name": "Garlic", "quantity": 1}
+            ],
+            "outcome": "Roasted Vegetables",
+            "crafters": ["Oven", "Grill"],
+            "recipe_craftable": true,
+            "base_cook_time": 45,
+            "cook_count": 0
+        },
+        {
+            "name": "Healing Salve",
+            "ingredients": [
+                {"name": "Herb", "quantity": 2},
+                {"name": "Oil", "quantity": 1}
+            ],
+            "outcome": "Healing Salve",
+            "crafters": ["Alchemy Table"],
+            "recipe_craftable": true,
+            "base_cook_time": 10,
+            "cook_count": 0
+        },
+        {
+            "name": "Pancakes",
+            "ingredients": [
+                {"name": "Flour", "quantity": 2},
+                {"name": "Milk", "quantity": 1},
+                {"name": "Egg", "quantity": 1},
+                {"name": "Sugar", "quantity": 1},
+                {"name": "Butter", "quantity": 1}
+            ],
+            "outcome": "Pancakes",
+            "crafters": ["Griddle", "Pan"],
+            "recipe_craftable": true,
+            "base_cook_time": 15,
+            "cook_count": 0
+        },
+        {
+            "name": "Omelette",
+            "ingredients": [
+                {"name": "Egg", "quantity": 2},
+                {"name": "Milk", "quantity": 1},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Pepper", "quantity": 1}
+            ],
+            "outcome": "Omelette",
+            "crafters": ["Pan"],
+            "recipe_craftable": true,
+            "base_cook_time": 10,
+            "cook_count": 0
+        },
+        {
+            "name": "Hamburger",
+            "ingredients": [
+                {"name": "Bread", "quantity": 2},
+                {"name": "Beef", "quantity": 1},
+                {"name": "Lettuce", "quantity": 1},
+                {"name": "Tomato", "quantity": 1},
+                {"name": "Cheese", "quantity": 1}
+            ],
+            "outcome": "Hamburger",
+            "crafters": ["Grill", "Pan"],
+            "recipe_craftable": true,
+            "base_cook_time": 20,
+            "cook_count": 0
+        },
+        {
+            "name": "Pizza",
+            "ingredients": [
+                {"name": "Dough", "quantity": 1},
+                {"name": "Tomato Sauce", "quantity": 1},
+                {"name": "Cheese", "quantity": 1},
+                {"name": "Pepperoni", "quantity": 1}
+            ],
+            "outcome": "Pizza",
+            "crafters": ["Oven"],
+            "recipe_craftable": true,
+            "base_cook_time": 25,
+            "cook_count": 0
+        },
+        {
+            "name": "Apple Pie",
+            "ingredients": [
+                {"name": "Dough", "quantity": 1},
+                {"name": "Apple", "quantity": 3},
+                {"name": "Sugar", "quantity": 1},
+                {"name": "Cinnamon", "quantity": 1}
+            ],
+            "outcome": "Apple Pie",
+            "crafters": ["Oven", "Bakery"],
+            "recipe_craftable": true,
+            "base_cook_time": 50,
+            "cook_count": 0
+        },
+        {
+            "name": "Mushroom Stew",
+            "ingredients": [
+                {"name": "Mushroom", "quantity": 3},
+                {"name": "Potato", "quantity": 2},
+                {"name": "Carrot", "quantity": 2},
+                {"name": "Onion", "quantity": 1},
+                {"name": "Water", "quantity": 3},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Pepper", "quantity": 1}
+            ],
+            "outcome": "Mushroom Stew",
+            "crafters": ["Cauldron", "Cooking Pot"],
+            "recipe_craftable": true,
+            "base_cook_time": 200,
+            "cook_count": 0
+        },
+        {
+            "name": "Fried Rice",
+            "ingredients": [
+                {"name": "Rice", "quantity": 2},
+                {"name": "Egg", "quantity": 1},
+                {"name": "Carrot", "quantity": 1},
+                {"name": "Peas", "quantity": 1},
+                {"name": "Soy Sauce", "quantity": 1}
+            ],
+            "outcome": "Fried Rice",
+            "crafters": ["Pan", "Wok"],
+            "recipe_craftable": true,
+            "base_cook_time": 15,
+            "cook_count": 0
+        },
+        {
+            "name": "Chicken Curry",
+            "ingredients": [
+                {"name": "Chicken", "quantity": 2},
+                {"name": "Curry Powder", "quantity": 1},
+                {"name": "Coconut Milk", "quantity": 1},
+                {"name": "Onion", "quantity": 1},
+                {"name": "Garlic", "quantity": 1},
+                {"name": "Ginger", "quantity": 1}
+            ],
+            "outcome": "Chicken Curry",
+            "crafters": ["Cauldron", "Cooking Pot"],
+            "recipe_craftable": true,
+            "base_cook_time": 60,
+            "cook_count": 0
+        },
+        {
+            "name": "Spaghetti",
+            "ingredients": [
+                {"name": "Pasta", "quantity": 2},
+                {"name": "Tomato Sauce", "quantity": 1},
+                {"name": "Garlic", "quantity": 1},
+                {"name": "Ground Beef", "quantity": 1}
+            ],
+            "outcome": "Spaghetti",
+            "crafters": ["Cooking Pot"],
+            "recipe_craftable": true,
+            "base_cook_time": 20,
+            "cook_count": 0
+        },
+        {
+            "name": "Salad",
+            "ingredients": [
+                {"name": "Lettuce", "quantity": 1},
+                {"name": "Tomato", "quantity": 1},
+                {"name": "Cucumber", "quantity": 1},
+                {"name": "Olive Oil", "quantity": 1},
+                {"name": "Vinegar", "quantity": 1}
+            ],
+            "outcome": "Salad",
+            "crafters": ["Kitchen", "Salad Bar"],
+            "recipe_craftable": true,
+            "base_cook_time": 5,
+            "cook_count": 0
+        },
+        {
+            "name": "Sausage and Eggs",
+            "ingredients": [
+                {"name": "Sausage", "quantity": 2},
+                {"name": "Egg", "quantity": 2},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Pepper", "quantity": 1}
+            ],
+            "outcome": "Sausage and Eggs",
+            "crafters": ["Pan"],
+            "recipe_craftable": true,
+            "base_cook_time": 10,
+            "cook_count": 0
+        },
+        {
+            "name": "Fish Stew",
+            "ingredients": [
+                {"name": "Fish", "quantity": 2},
+                {"name": "Potato", "quantity": 2},
+                {"name": "Carrot", "quantity": 2},
+                {"name": "Onion", "quantity": 1},
+                {"name": "Water", "quantity": 3},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Pepper", "quantity": 1}
+            ],
+            "outcome": "Fish Stew",
+            "crafters": ["Cauldron", "Cooking Pot"],
+            "recipe_craftable": true,
+            "base_cook_time": 150,
+            "cook_count": 0
+        },
+        {
+            "name": "Steak",
+            "ingredients": [
+                {"name": "Beef", "quantity": 1},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Pepper", "quantity": 1}
+            ],
+            "outcome": "Steak",
+            "crafters": ["Grill", "Pan"],
+            "recipe_craftable": true,
+            "base_cook_time": 15,
+            "cook_count": 0
+        },
+        {
+            "name": "Chicken Sandwich",
+            "ingredients": [
+                {"name": "Bread", "quantity": 2},
+                {"name": "Chicken", "quantity": 1},
+                {"name": "Lettuce", "quantity": 1},
+                {"name": "Tomato", "quantity": 1},
+                {"name": "Mayonnaise", "quantity": 1}
+            ],
+            "outcome": "Chicken Sandwich",
+            "crafters": ["Pan"],
+            "recipe_craftable": true,
+            "base_cook_time": 10,
+            "cook_count": 0
+        },
+        {
+            "name": "Garlic Bread",
+            "ingredients": [
+                {"name": "Bread", "quantity": 1},
+                {"name": "Garlic", "quantity": 1},
+                {"name": "Butter", "quantity": 1}
+            ],
+            "outcome": "Garlic Bread",
+            "crafters": ["Oven"],
+            "recipe_craftable": true,
+            "base_cook_time": 10,
+            "cook_count": 0
+        },
+        {
+            "name": "Beef Tacos",
+            "ingredients": [
+                {"name": "Tortilla", "quantity": 2},
+                {"name": "Ground Beef", "quantity": 1},
+                {"name": "Cheese", "quantity": 1},
+                {"name": "Lettuce", "quantity": 1},
+                {"name": "Tomato", "quantity": 1}
+            ],
+            "outcome": "Beef Tacos",
+            "crafters": ["Pan"],
+            "recipe_craftable": true,
+            "base_cook_time": 20,
+            "cook_count": 0
+        },
+        {
+            "name": "Tomato Soup",
+            "ingredients": [
+                {"name": "Tomato", "quantity": 3},
+                {"name": "Water", "quantity": 2},
+                {"name": "Salt", "quantity": 1},
+                {"name": "Pepper", "quantity": 1}
+            ],
+            "outcome": "Tomato Soup",
+            "crafters": ["Cauldron", "Cooking Pot"],
+            "recipe_craftable": true,
+            "base_cook_time": 40,
+            "cook_count": 0
+        }
+    ]
+}
