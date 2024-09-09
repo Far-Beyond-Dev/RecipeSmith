@@ -251,7 +251,7 @@ impl RecipeBook {
 }
 
 #[tokio::main]
-async fn main() {
+pub async fn main() {
     // Initialize logger
     env_logger::init();
 
