@@ -14,11 +14,6 @@ env_logger = "0.9"
 chrono = "0.4"
 async-std = { version = "1.10", features = ["attributes"] }
 
-
-[features]
-default = ["full"]
-futures = "0.3"
-
 [dependencies.skillscript]
 # Uncomment this communication dependency when SkillsScript submodule is implemented
 # git = "https://github.com/gamedev44/skillscript"
