@@ -7,9 +7,9 @@ use csv::Reader;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use uuid::Uuid;
-use pebblevault::Vault;
 use log::{error, info};
 use chrono::Local;
+//use PebbleVault::Vault;
 
 /// Structure representing an Ingredient with required quantity and recipe crafting flag.
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -106,37 +106,37 @@ impl StorageContainer {
 pub struct RecipeBook {
     pub recipes: HashMap<String, Recipe>,
     pub crafters: HashMap<Crafter, Vec<String>>,
-    pub vault: Vault,
+    //pub vault: Vault,
 }
 
 impl RecipeBook {
     /// Creates a new RecipeBook.
     pub fn new() -> Self {
-        let vault = Vault::new();
-        vault.define_class("recipe", r#"{
-            "name": "string",
-            "ingredients": "array",
-            "outcome": "string",
-            "base_cook_time": "u32",
-            "cook_count": "u32",
-            "crafters": "array"
-        }"#);
+        //let vault = Vault::new();
+        // vault.define_class("recipe", r#"{
+        //    "name": "string",
+        //    "ingredients": "array",
+        //    "outcome": "string",
+        //   "base_cook_time": "u32",
+        //    "cook_count": "u32",
+        //   "crafters": "array"
+        //  }"#);
 
-        vault.define_class("skill", r#"{
-            "name": "string",
-            "level": "u32",
-            "experience": "u32"
-        }"#);
+        //vault.define_class("skill", r#"{
+        //    "name": "string",
+        //    "level": "u32",
+        //    "experience": "u32"
+        // }"#);
 
-        vault.define_class("achievement", r#"{
-            "name": "string",
-            "unlocked": "bool"
-        }"#);
+        // vault.define_class("achievement", r#"{
+        //     "name": "string",
+        //     "unlocked": "bool"
+        // }"#);
 
         Self {
             recipes: HashMap::new(),
             crafters: HashMap::new(),
-            vault,
+            //vault,
         }
     }
 
@@ -147,7 +147,7 @@ impl RecipeBook {
         }
         self.recipes.insert(recipe.name.clone(), recipe.clone());
         let serialized_recipe = serde_json::to_string(&recipe).unwrap();
-        self.vault.collect("recipe", &recipe.name, &serialized_recipe);
+        // self.vault.collect("recipe", &recipe.name, &serialized_recipe);
     }
 
     /// Retrieves a recipe by its name.
@@ -155,16 +155,17 @@ impl RecipeBook {
         if let Some(recipe) = self.recipes.get(name) {
             Some(recipe.clone())
         } else {
-            if let Some(data) = self.vault.skim("recipe", name) {
-                let recipe: Recipe = serde_json::from_str(&data).unwrap();
-                Some(recipe)
-            } else {
-                None
-            }
+            //if let Some(data) = self.vault.skim("recipe", name) {
+            //    let recipe: Recipe = serde_json::from_str(&data).unwrap();
+            //    Some(recipe)
+            //} else {
+            //    None
+            //}
+            None
         }
     }
 
-    pub fn get_recipes_for_crafter(&self, crafter: &Crafter) -> Vec<&Recipe> {
+    pub fn get_recipes_for_crafter(&self, crafter: &Crafter) -> Vec<Recipe> {
         self.crafters.get(crafter)
             .map(|recipe_names| recipe_names.iter().filter_map(|name| self.get_recipe(name)).collect())
             .unwrap_or_else(Vec::new)
@@ -208,15 +209,15 @@ impl RecipeBook {
 
             // Send cook count update to PebbleVault
             let serialized_recipe = serde_json::to_string(&recipe).unwrap();
-            self.vault.collect("recipe", &recipe.name, &serialized_recipe);
+            //self.vault.collect("recipe", &recipe.name, &serialized_recipe);
 
             // Notify SkillsScript if the recipe is mastered
             if recipe.is_mastered() {
-                self.vault.collect("mastered_recipe", &recipe.name, r#"{"mastered": true}"#);
+                //self.vault.collect("mastered_recipe", &recipe.name, r#"{"mastered": true}"#);
             }
 
             // Notify SkillsScript about skill experience gain
-            self.vault.collect("skill_experience", &recipe.name, r#"{"experience": 10}"#);
+            //self.vault.collect("skill_experience", &recipe.name, r#"{"experience": 10}"#);
 
             Some(recipe.outcome.clone())    // Return the outcome of crafting
         } else {
@@ -229,13 +230,13 @@ impl RecipeBook {
         let file = File::open(filename)?;
         let reader = BufReader::new(file);
 
-        if filename ends_with(".json") {
+        if filename.ends_with(".json"){
             // Parse JSON
             let recipes: Vec<Recipe> = serde_json::from_reader(reader)?;
             for recipe in recipes {
                 self.add_recipe(recipe);
             }
-        } else if filename ends_with(".csv") {
+        } else if filename.ends_with(".csv"){
             // Parse CSV
             let mut csv_reader = Reader::from_reader(reader);
             for result in csv_reader.deserialize::<Recipe>() {
@@ -474,7 +475,7 @@ pub async fn main() {
             if recipe_book.can_craft("Bread", &inventory) {
                 if let Some(item) = recipe_book.craft("Bread", &mut inventory).await {
                     info!("Crafted: {}", item);
-                    recipe_book.vault.collect("skill_experience", "crafting", r#"{"experience": 10}"#);
+                    // recipe_book.vault.collect("skill_experience", "crafting", r#"{"experience": 10}"#);
                 } else {
                     error!("Failed to craft Bread.");
                 }
@@ -485,7 +486,7 @@ pub async fn main() {
             if recipe_book.can_craft("Cake", &inventory) {
                 if let Some(item) = recipe_book.craft("Cake", &mut inventory).await {
                     info!("Crafted: {}", item);
-                    recipe_book.vault.collect("skill_experience", "crafting", r#"{"experience": 20}"#);
+                    // recipe_book.vault.collect("skill_experience", "crafting", r#"{"experience": 20}"#);
                 } else {
                     error!("Failed to craft Cake.");
                 }
